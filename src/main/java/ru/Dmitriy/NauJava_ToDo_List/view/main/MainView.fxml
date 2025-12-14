@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.Dmitriy.NauJava_ToDo_List.controller.MainController">
+
+    <top>
+        <VBox>
+            <MenuBar fx:id="mainMenuBar">
+                <Menu text="Файл">
+                    <MenuItem fx:id="logoutMenuItem" text="Выйти" />
+                    <SeparatorMenuItem />
+                    <MenuItem text="Выход из программы" onAction="#handleExit" />
+                </Menu>
+                <Menu text="Справка">
+                    <MenuItem text="О программе" onAction="#handleAbout" />
+                </Menu>
+            </MenuBar>
+
+            <HBox spacing="10" padding="10" style="-fx-background-color: #f8f9fa;">
+                <Label fx:id="welcomeLabel" text="Добро пожаловать!"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="userInfoLabel" text=""
+                       style="-fx-text-fill: #666; -fx-font-size: 12px;" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TabPane fx:id="mainTabPane">
+            <Tab fx:id="usersTab" text="Пользователи" closable="false">
+                <VBox spacing="10" padding="10">
+                    <HBox spacing="10">
+                        <Button fx:id="addUserButton" text="Добавить"
+                                style="-fx-background-color: #2ecc71; -fx-text-fill: white;" />
+                        <Button fx:id="editUserButton" text="Редактировать"
+                                style="-fx-background-color: #3498db; -fx-text-fill: white;" />
+                        <Button fx:id="deleteUserButton" text="Удалить"
+                                style="-fx-background-color: #e74c3c; -fx-text-fill: white;" />
+                        <Button fx:id="refreshUsersButton" text="Обновить" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <TextField promptText="Поиск..." />
+                        <Button text="Поиск" />
+                    </HBox>
+
+                    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+                            <TableColumn fx:id="fullNameColumn" text="ФИО" prefWidth="200" />
+                            <TableColumn fx:id="emailColumn" text="Email" prefWidth="200" />
+                            <TableColumn fx:id="loginColumn" text="Логин" prefWidth="150" />
+                            <TableColumn fx:id="activeColumn" text="Статус" prefWidth="100" />
+                        </columns>
+                    </TableView>
+
+                    <HBox spacing="10">
+                        <Label text="Всего пользователей:" />
+                        <Label text="0" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label text="Активных:" />
+                        <Label text="0" />
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <Tab fx:id="tasksTab" text="Задачи" closable="false">
+                <VBox spacing="10" padding="10">
+                    <Label text="Управление задачами" />
+                    <!-- TODO: Добавить интерфейс для задач -->
+                </VBox>
+            </Tab>
+
+            <Tab fx:id="statisticsTab" text="Статистика" closable="false">
+                <VBox spacing="10" padding="10">
+                    <Label text="Статистика системы" />
+                    <!-- TODO: Добавить статистику -->
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <ToolBar style="-fx-background-color: #e0e0e0;">
+            <Label text="Готово" />
+        </ToolBar>
+    </bottom>
+
+</BorderPane>
